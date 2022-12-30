@@ -1,0 +1,10 @@
+.DS_Store
+.vscode/**
+src/**
+.gitignore
+tsconfig.json
+tslint.json
+*.ts
+*.vsix
+*.map
+extension/out/extension.js

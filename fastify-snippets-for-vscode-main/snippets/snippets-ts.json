@@ -1,0 +1,34 @@
+{
+  "fastify hello server with typescript": {
+    "scope": "typescript",
+    "prefix": "ffhello",
+    "body": [
+      "import fastify from 'fastify'",
+      "const app = fastify({ logger: true })",
+      "app.get('/', async (request, reply) => {",
+      "  return { hello: 'world' }",
+      "})",
+      "app.post('/', async (request, reply) => {",
+      "  return request.body",
+      "})",
+      "app.listen(8080)"
+    ],
+    "description": "Create an hello world server"
+  },
+  "fastify hello server with typescript and types": {
+    "scope": "typescript",
+    "prefix": "ffhello-types",
+    "body": [
+      "import fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'",
+      "const app: FastifyInstance = fastify({ logger: true })",
+      "app.get('/', async (request: FastifyRequest, reply: FastifyReply) => {",
+      "  return { hello: 'world' }",
+      "})",
+      "app.post('/', async (request: FastifyRequest, reply: FastifyReply) => {",
+      "  return request.body",
+      "})",
+      "app.listen(8080)"
+    ],
+    "description": "Create an hello world server with types"
+  }
+}

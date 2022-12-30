@@ -1,0 +1,130 @@
+{
+  "name": "nestjs-snippets-for-vscode",
+  "displayName": "Pratics NestJS snippets for VS Code editor + ExpressJS snippets",
+  "description": "Snippets for NestJS + ExpressJS in VS Code editor",
+  "version": "0.0.9",
+  "publisher": "EstevamSouza",
+  "author": {
+    "name": "Estevam Souza"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "bugs": {
+    "url": "https://github.com/estevam5s/nestjs-snippets/issues",
+    "email": "estevamsouzalaureth@gmail.com"
+  },
+  "scripts": {
+    "deploy": "vsce publish --yarn",
+    "push": "git push origin master",
+    "package": "vsce package",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/estevam5s/nestjs-snippets.git",
+    "directory": "src",
+    "branch": "master"
+  },
+  "galleryBanner": {
+    "color": "#1b1f23",
+    "theme": "dark"
+  },
+  "categories": [
+    "Snippets",
+    "Formatters",
+    "Linters",
+    "Programming Languages",
+    "Education"
+  ],
+  "engines": {
+    "vscode": "^1.30.0"
+  },
+  "keywords": [
+    "nestjs",
+    "express",
+    "javascript",
+    "typescript",
+    "snippets",
+    "vscode"
+  ],
+  "badges": [
+      {
+        "url": "https://img.shields.io/badge/Author-Eno Yao-blueviolet",
+        "href": "https://github.com/estevam5s",
+        "description": "Estevam Souza"
+      },
+      {
+        "url": "https://vsmarketplacebadge.apphb.com/version-short/wscats.eno.svg?color=blue&style=flat-square",
+        "href": "https://marketplace.visualstudio.com/items?itemName=EstevamSouza.nestjs-snippets-for-vscode",
+        "description": "VS Marketplace"
+      }
+    ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippets.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippetsExpress.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippetsExpress.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippetsGraphQL.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippetsGraphQL.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippetsPrisma.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippetsPrisma.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippetsSequelize.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippetsSequelize.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippetsEs7.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippetsEs7.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippetsRxJS.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippetsRxJS.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./src/snippets/snippetsReactJavascript.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets/snippetsReactJavascript.json"
+      }
+    ]
+  }
+}

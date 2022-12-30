@@ -1,0 +1,95 @@
+{
+  "Express Controller": {
+    "prefix": "exctl",
+    "body": [
+      "import { Router } from 'express';",
+      "",
+      "const router = Router();",
+      "",
+      "router.get('/', (req, res) => {",
+      "  res.send('This action returns all $1');",
+      "});",
+      "",
+      "router.get('/:id', (req, res) => {",
+      "  res.send('This action returns a #${req.params.id} $1');",
+      "});",
+      "",
+      "router.post('/', (req, res) => {",
+      "  res.send('This action adds a new $1');",
+      "});",
+      "",
+      "router.put('/:id', (req, res) => {",
+      "  res.send('This action updates a #${req.params.id} $1');",
+      "});",
+      "",
+      "router.delete('/:id', (req, res) => {",
+      "  res.send('This action removes a #${req.params.id} $1');",
+      "});",
+      "",
+      "export default router;"
+    ],
+    "description": "Express Controller"
+  },
+  "Express Model": {
+    "prefix": "exmdl",
+    "body": [
+      "import mongoose from 'mongoose';",
+      "",
+      "const $1Schema = new mongoose.Schema({",
+      "  $2",
+      "});",
+      "",
+      "export default mongoose.model('$1', $1Schema);"
+    ],
+    "description": "Express Model"
+  },
+  "Express Route": {
+    "prefix": "exrte",
+    "body": [
+      "import express from 'express';",
+      "import $1Controller from '../controllers/$1Controller';",
+      "",
+      "const router = express.Router();",
+      "",
+      "router.get('/', $1Controller.index);",
+      "router.get('/:id', $1Controller.show);",
+      "router.post('/', $1Controller.store);",
+      "router.put('/:id', $1Controller.update);",
+      "router.delete('/:id', $1Controller.destroy);",
+      "",
+      "export default router;"
+    ],
+    "description": "Express Route"
+  },
+  "Express Service": {
+    "prefix": "exsrv",
+    "body": [
+      "import $1 from '../models/$1';",
+      "",
+      "class $1Service {",
+      "  async index() {",
+      "    return await $1.find();",
+      "  }",
+      "",
+      "  async show(id) {",
+      "    return await $1.findById(id);",
+      "  }",
+      "",
+      "  async store(data) {",
+      "    return await $1.create(data);",
+      "  }",
+      "",
+      "  async update(id, data) {",
+      "    return await $1.findByIdAndUpdate (id, data, { new: true });",
+      "  }",
+      "",
+      "  async destroy(id) {",
+      "    return await $1.findByIdAndRemove(id);",
+      "  }",
+      "}",
+      "",
+      "export default new $1Service();"
+    ],
+    "description": "Express Service"
+  }   
+}

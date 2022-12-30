@@ -1,0 +1,98 @@
+{
+  "name": "js-ultimate-snippets",
+  "description": "A collection of snippets that cover JavaScript, TypeScript, and NodeJS for Visual Studio Code 🚀🚀🚀",
+  "version": "0.0.2",
+  "type": "module",
+  "scripts": {
+    "update": "yarn upgrade-interactive",
+    "build": "tsx src/index.ts",
+    "package": "vsce package"
+  },
+  "displayName": "ultimate snippets for JavaScript, TypeScript, and NodeJS 👹",
+  "publisher": "EstevamSouza",
+  "icon": "images/hyper-js.png",
+  "galleryBanner": {
+    "color": "#000000",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^0.10.0",
+    "node": "^16.0.0"
+  },
+  "categories": [
+    "Snippets",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "snippet",
+    "snippets",
+    "javascript",
+    "typescript",
+    "point-free",
+    "pointfree",
+    "point free"
+  ],
+
+  "author": {
+    "email": "estevamsouzalaureth@gmail.com",
+    "name": "Estevam Souza",
+    "url": "https://github.com/estevam5s"
+  },
+  "maintainers": [
+    {
+      "email": "estevamsouzalaureth@gmail.com",
+      "name": "Estevam Souza"
+    }
+  ],
+  "homepage": "https://estevamwebsite.gatsbyjs.io/",
+  "sponsor": {
+    "url": "https://github.com/sponsors/estevam5s"
+  },
+  "preview": false,
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "bugs": {
+    "url": "https://github.com/estevam5s/ultimate-javascript-and-typescript-snippets/issues",
+    "email": "estevamsouzalaureth@gmail.com"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./dist/javascript.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./dist/javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./dist/typescript.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./dist/typescript.json"
+      }
+    ]
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/estevam5s/ultimate-javascript-and-typescript-snippets"
+  },
+  "devDependencies": {
+    "@types/node": "^16.0.0",
+    "col-config": "^1.1.0",
+    "tsx": "^3.4.2",
+    "typescript": "^4.7.3"
+  }
+}

@@ -1,0 +1,765 @@
+{
+  "Nestjs Controller": {
+    "prefix": "nsctl",
+    "body": [
+      "import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';",
+      "",
+      "@Controller('$1')",
+      "export class $2Controller {",
+      "  @Get()",
+      "  findAll(): string {",
+      "    return 'This action returns all $1';",
+      "  }",
+      "",
+      "  @Get(':id')",
+      "  findOne(@Param('id') id): string {",
+      "    return 'This action returns a #${id} $1';",
+      "  }",
+      "",
+      "  @Post()",
+      "  create(@Body() $1Data): string {",
+      "    return 'This action adds a new $1';",
+      "  }",
+      "",
+      "  @Put(':id')",
+      "  update(@Param('id') id, @Body() $1Data): string {",
+      "    return 'This action updates a #${id} $1';",
+      "  }",
+      "",
+      "  @Delete(':id')",
+      "  remove(@Param('id') id): string {",
+      "    return 'This action removes a #${id} $1';",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Controller"
+  },
+  "Nestjs Sequelize Database Provider": {
+    "prefix": "nssql",
+    "body": [
+      "import { Sequelize } from 'sequelize-typescript';",
+      "import { $1 } from './$1.entity';",
+      "",
+      "export const databaseProviders = [",
+      "  {",
+      "    provide: 'SEQUELIZE',",
+      "    useFactory: async () => {",
+      "    const sequelize = new Sequelize({",
+      "       dialect: 'postgres',",
+      "       host: 'localhost',",
+      "       port: 5432,",
+      "       username: 'postgres',",
+      "       password: 'postgres',",
+      "       database: 'postgres',",
+      "       models: [$1],",
+      "       autoLoadModels: true",
+      "     });",
+      "     await sequelize.sync();",
+      "     return sequelize;",
+      "    },",
+      "  },",
+      "];"
+    ],
+    "description": "Nestjs Sequelize Database Provider"
+  },
+  "Nestjs Sequelize Provider": {
+    "prefix": "nssqlpr",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { InjectModel } from '@nestjs/sequelize';",
+      "import { $1 } from './$1.model';",
+      "",
+      "@Injectable()",
+      "export class $2Service {",
+      "  constructor(@InjectModel($1) private $1Repository: typeof $1) {}",
+      "",
+      "  async findAll(): Promise<$1[]> {",
+      "    return this.$1Repository.findAll();",
+      "  }",
+      "",
+      "  async findOne(id: number): Promise<$1> {",
+      "    return this.$1Repository.findOne({ where: { id } });",
+      "  }",
+      "",
+      "  async create($1Data): Promise<$1> {",
+      "    return this.$1Repository.create($1Data);",
+      "  }",
+      "",
+      "  async update(id: number, $1Data): Promise<[number, $1[]]> {",
+      "    return this.$1Repository.update($1Data, { where: { id } });",
+      "  }",
+      "",
+      "  async remove(id: number): Promise<number> {",
+      "    return this.$1Repository.destroy({ where: { id } });",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Sequelize Provider"
+  },
+
+  "Nestjs Unit Test": {
+    "prefix": "nstst",
+    "body": [
+      "import { Test, TestingModule } from '@nestjs/testing';",
+      "import { $2Controller } from './$1.controller';",
+      "",
+      "describe('$2Controller', () => {",
+      "  let $1Controller: $2Controller;",
+      "",
+      "  beforeEach(async () => {",
+      "    const app: TestingModule = await Test.createTestingModule({",
+      "      controllers: [$2Controller],",
+      "    }).compile();",
+      "",
+      "    $1Controller = app.get<$2Controller>($2Controller);",
+      "  });",
+      "",
+      "  describe('root', () => {",
+      "    it('should return \"This action returns all $1\"', () => {",
+      "      expect($1Controller.findAll()).toBe('This action returns all $1');",
+      "    });",
+      "  });",
+      "});"
+    ],
+    "description": "Nestjs Unit Test"
+  },
+  "Nestjs Mongoose Interface": {
+    "prefix": "nsmg",
+    "body": [
+      "import { Document } from 'mongoose';",
+      "",
+      "export interface $1 extends Document {",
+      "  $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs Mongoose Interface"
+  },
+  "Nestjs Mongoose Service": {
+    "prefix": "nsmssvc",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { InjectModel } from '@nestjs/mongoose';",
+      "import { Model } from 'mongoose';",
+      "import { $2 } from './$1.schema';",
+      "",
+      "@Injectable()",
+      "export class $2Service {",
+      "  constructor(@InjectModel('$2') private readonly $1Model: Model<$2>) {}",
+      "",
+      "  async findAll(): Promise<$2[]> {",
+      "    return await this.$1Model.find().exec();",
+      "  }",
+      "",
+      "  async findOne(id): Promise<$2> {",
+      "    return await this.$1Model.findById(id);",
+      "  }",
+      "",
+      "  async create($1Data: $2): Promise<$2> {",
+      "    const new$2 = new this.$1Model($1Data);",
+      "    return await new$2.save();",
+      "  }",
+      "",
+      "  async update(id, $1Data: $2): Promise<$2> {",
+      "    return await this.$1Model.findByIdAndUpdate(id, $1Data, { new: true });",
+      "  }",
+      "",
+      "  async delete(id): Promise<$2> {",
+      "    return await this.$1Model.findByIdAndRemove(id);",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Mongoose Service"
+  },
+  "Nestjs Repository": {
+    "prefix": "nsrp",
+    "body": [
+      "import { EntityRepository, Repository } from 'typeorm';",
+      "import { $1 } from './$1.entity';",
+      "",
+      "@EntityRepository($1)",
+      "export class $2Repository extends Repository<$1> {",
+      "}",
+      ""
+    ],
+    "description": "Nestjs Repository"
+  },
+  "Nestjs Entity": {
+    "prefix": "nsent",
+    "body": [
+      "import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';",
+      "",
+      "@Entity()",
+      "export class $1 {",
+      "  @PrimaryGeneratedColumn()",
+      "  id: number;",
+      "",
+      "  @Column()",
+      "  name: string;",
+      "",
+      "  @Column()",
+      "  age: number;",
+      "",
+      "  @Column()",
+      "  breed: string;",
+      "}"
+    ],
+    "description": "Nestjs Entity"
+  },
+  "Nestjs Custom Exception": {
+    "prefix": "nsctexp",
+    "body": [
+      "import { HttpException, HttpStatus } from '@nestjs/common';",
+      "",
+      "export class $1Exception extends HttpException {",
+      "  constructor() {",
+      "    super('$1Exception', HttpStatus.BAD_REQUEST);",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Custom Exception"
+  },
+  "Nestjs Enum": {
+    "prefix": "nse",
+    "body": [
+      "export enum $1 {",
+      "  $2 = '$2',",
+      "  $3 = '$3',",
+      "  $4 = '$4',",
+      "}"
+    ],
+    "description": "Nestjs Enum"
+  },
+  "Nestjs DTO": {
+    "prefix": "nsdto",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1Dto {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO"
+  },
+  "Nestjs DTO Update": {
+    "prefix": "nsdtoup",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1DtoUpdate {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO Update"
+  },
+  "Nestjs DTO Create": {
+    "prefix": "nsdtocreate",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1DtoCreate {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO Create"
+  },
+  "Nestjs DTO Query": {
+    "prefix": "nsdtoquery",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1DtoQuery {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO Query"
+  },
+  "Nestjs DTO Query Paginate": {
+    "prefix": "nsdtoquerypag",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1DtoQueryPaginate {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO Query Paginate"
+  },
+  "Nestjs DTO Query Paginate Sort": {
+    "prefix": "nsdtoquerypagsort",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1DtoQueryPaginateSort {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO Query Paginate Sort"
+  },
+  "Nestjs DTO Query Paginate Sort Filter": {
+    "prefix": "nsdtoquerypagsortfil",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1DtoQueryPaginateSortFilter {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO Query Paginate Sort Filter"
+  },
+  "Nestjs DTO Query Paginate Sort Filter Search": {
+    "prefix": "nsdtoquerypagsortfilsea",
+    "body": [
+      "import { IsNotEmpty } from 'class-validator';",
+      "",
+      "export class $1DtoQueryPaginateSortFilterSearch {",
+      "  @IsNotEmpty()",
+      "  readonly $2: $3;",
+      "}"
+    ],
+    "description": "Nestjs DTO Query Paginate Sort Filter Search"
+  },
+  "Nestjs Logger": {
+    "prefix": "nslgg",
+    "body": [
+      "import { Injectable, Logger } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class $1Logger extends Logger {",
+      "  log(message: string) {",
+      "    super.log(message);",
+      "  }",
+      "",
+      "  error(message: string, trace: string) {",
+      "    super.error(message, trace);",
+      "  }",
+      "",
+      "  warn(message: string) {",
+      "    super.warn(message);",
+      "  }",
+      "",
+      "  debug(message: string) {",
+      "    super.debug(message);",
+      "  }",
+      "",
+      "  verbose(message: string) {",
+      "    super.verbose(message);",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Logger"
+  },
+  "Nestjs Custom Decorator": {
+    "prefix": "nsctdec",
+    "body": [
+      "import { createParamDecorator, ExecutionContext } from '@nestjs/common';",
+      "",
+      "export const $1 = createParamDecorator((data: unknown, ctx: ExecutionContext) => {",
+      "  const request = ctx.switchToHttp().getRequest();",
+      "  return request.user;",
+      "});"
+    ],
+    "description": "Nestjs Custom Decorator"
+  },
+  "Nestjs Jwt Strategy": {
+    "prefix": "nsjwtstr",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { PassportStrategy } from '@nestjs/passport';",
+      "import { Strategy, ExtractJwt } from 'passport-jwt';",
+      "import { jwtConstants } from './constants';",
+      "",
+      "@Injectable()",
+      "export class JwtStrategy extends PassportStrategy(Strategy) {",
+      "  constructor() {",
+      "    super({",
+      "      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),",
+      "      ignoreExpiration: false ,",
+      "      secretOrKey: jwtConstants.secret ,",
+      "    });",
+      "  }",
+      "",
+      "  async validate(payload: any) {",
+      "    return { userId: payload.sub, username: payload.username };",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Jwt Strategy"
+  },
+  "Nestjs Pipe": {
+    "prefix": "nspp",
+    "body": [
+      "import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class $1Pipe implements PipeTransform<any> {",
+      "  async transform(value, metadata: ArgumentMetadata) {",
+      "    return value;",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Pipe"
+  },
+  "Nestjs Dynamic Module": {
+    "prefix": "nsdmd",
+    "body": [
+      "import { DynamicModule, Module } from '@nestjs/common';",
+      "",
+      "@Module({",
+      "  imports: [],",
+      "  controllers: [],",
+      "  providers: [],",
+      "  exports: []",
+      "})",
+      "export class $1Module {",
+      "  static register(): DynamicModule {",
+      "    return {",
+      "      module: $1Module,",
+      "      imports: [],",
+      "      controllers: [],",
+      "      providers: [],",
+      "      exports: []",
+      "    };",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Dynamic Module"
+  },
+  "Nestjs Filter": {
+    "prefix": "nsflt",
+    "body": [
+      "import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus } from '@nestjs/common';",
+      "",
+      "@Catch()",
+      "export class $1Filter implements ExceptionFilter {",
+      "  catch(exception: HttpException, host: ArgumentsHost) {",
+      "    const ctx = host.switchToHttp();",
+      "    const response = ctx.getResponse();",
+      "    const request = ctx.getRequest();",
+      "    const status = exception.getStatus ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;",
+      "",
+      "    response",
+      "      .status(status)",
+      "      .json({",
+      "        statusCode: status,",
+      "        timestamp: new Date().toISOString(),",
+      "        path: request.url,",
+      "        message: exception.message",
+      "      });",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Filter"
+  },
+  "Nestjs Provider": {
+    "prefix": "nsprd",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  getHello(): string {",
+      "    return 'Hello World!';",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Provider"
+  },
+  "Nestjs Guard": {
+    "prefix": "nsgd",
+    "body": [
+      "import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class $1Guard implements CanActivate {",
+      "  canActivate(context: ExecutionContext): boolean {",
+      "    const request = context.switchToHttp().getRequest();",
+      "    return true;",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Guard"
+  },
+  "Nestjs Interceptor": {
+    "prefix": "nsitpr",
+    "body": [
+      "import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';",
+      "import { Observable } from 'rxjs';",
+      "import { map } from 'rxjs/operators';",
+      "",
+      "@Injectable()",
+      "export class $1Interceptor implements NestInterceptor {",
+      "  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {",
+      "    return next",
+      "      .handle()",
+      "      .pipe(map(data => ({",
+      "        data,",
+      "        message: '$1',",
+      "      })));",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Interceptor"
+  },
+  "Nestjs Root Module": {
+    "prefix": "nsrtmd",
+    "body": [
+      "import { Module } from '@nestjs/common';",
+      "import { $2Controller } from './$2.controller';",
+      "",
+      "@Module({",
+      "  imports: [],",
+      "  controllers: [$2Controller],",
+      "  providers: []",
+      "})",
+      "export class $2Module {}"
+    ],
+    "description": "Nestjs Root Module"
+  },
+  "Nestjs Middleware": {
+    "prefix": "nsmdlwr",
+    "body": [
+      "import { Injectable, NestMiddleware } from '@nestjs/common';",
+      "import { Request, Response } from 'express';",
+      "",
+      "@Injectable()",
+      "export class $1Middleware implements NestMiddleware {",
+      "  use(req: Request, res: Response, next: Function) {",
+      "    next();",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Middleware"
+  },
+  "Nestjs Service": {
+    "prefix": "nsvc",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  getHello(): string {",
+      "    return 'Hello World!';",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Service"
+  },
+  "Nestjs Module": {
+    "prefix": "nsmd",
+    "body": [
+      "import { Module } from '@nestjs/common';",
+      "import { $1Controller } from './$1.controller';",
+      "import { $1Service } from './$1.service';",
+      "",
+      "@Module({",
+      "  imports: [],",
+      "  controllers: [$1Controller],",
+      "  providers: [$1Service],",
+      "})",
+      "export class $1Module {}"
+    ],
+    "description": "Nestjs Module"
+  },
+  "Nestjs Module Import": {
+    "prefix": "nsmdip",
+    "body": ["import { $1Module } from './$1/$1.module';"],
+    "description": "Nestjs Module Import"
+  },
+  "Nestjs Module Import Add": {
+    "prefix": "nsmdipadd",
+    "body": ["imports: [$1Module],"],
+    "description": "Nestjs Module Import Add"
+  },
+  "Nestjs TypeOrm Connection": {
+    "prefix": "nstpcnn",
+    "body": [
+      "import { TypeOrmModule } from '@nestjs/typeorm';",
+      "",
+      "@Module({",
+      "  imports: [",
+      "    TypeOrmModule.forRoot({",
+      "      type: 'postgres',",
+      "      host: 'localhost',",
+      "      port: 5432,",
+      "      username: 'postgres',",
+      "     password: 'docker',",
+      "      database: 'gostack_gobarber',",
+      "      entities: [__dirname + '/**/*.entity{.ts,.js}'],",
+      "      synchronize: true,",
+      "    }),",
+      "  ],",
+      "  controllers: [],",
+      "  providers: [],",
+      "})"
+    ],
+    "description": "Nestjs TypeOrm Connection"
+  },
+  "Nestjs TypeOrm Repository": {
+    "prefix": "nstprp",
+    "body": [
+      "import { EntityRepository, Repository } from 'typeorm';",
+      "",
+      "@EntityRepository($1)",
+      "export class $2Repository extends Repository<$1> {}"
+    ],
+    "description": "Nestjs TypeOrm Repository"
+  },
+  "Nestjs TypeOrm Repository Import": {
+    "prefix": "nstprpimp",
+    "body": ["import { $1Repository } from './$1.repository';"],
+    "description": "Nestjs TypeOrm Repository Import"
+  },
+  "Nestjs Prisma Service": {
+    "prefix": "nsprismasvc",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { PrismaClient } from '@prisma/client';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  private prisma = new PrismaClient();",
+      "",
+      "  async $2() {",
+      "    return this.prisma.$2();",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Prisma Service"
+  },
+  "Nestjs Sequelize Service": {
+    "prefix": "nsqlsrv",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { Sequelize } from 'sequelize-typescript';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  constructor(private sequelize: Sequelize) {}",
+      "",
+      "  async $2() {",
+      "    return this.sequelize.$2();",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Sequelize Service"
+  },
+  "Nestjs Mongoose Service V2": {
+    "prefix": "nsmgsrcv2",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { Model } from 'mongoose';",
+      "import { InjectModel } from '@nestjs/mongoose';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  constructor(@InjectModel('$1') private $1Model: Model<$1>) {}",
+      "",
+      "  async $2() {",
+      "    return this.$1Model.$2();",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Mongoose Service"
+  },
+  "Nestjs Swagger": {
+    "prefix": "nsswgg",
+    "body": [
+      "import { ApiTags } from '@nestjs/swagger';",
+      "",
+      "@ApiTags('$1')",
+      "export class $2Controller {}"
+    ],
+    "description": "Nestjs Swagger"
+  },
+  "Nestjs Jwt": {
+    "prefix": "nsjwt",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { JwtService } from '@nestjs/jwt';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  constructor (private jwtService: JwtService) {}",
+      "",
+      "  async $2() {",
+      "    return this.jwtService.$2();",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Jwt"
+  },
+  "Nestjs Bcrypt": {
+    "prefix": "nsbcrt",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { BcryptService } from 'nestjs-bcrypt';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  constructor (private bcryptService: BcryptService) {}",
+      "",
+      "  async $2() {",
+      "    return this.bcryptService.$2();",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Bcrypt"
+  },
+  "Nestjs Mailer": {
+    "prefix": "nsmlr",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "import { MailerService } from '@nestjs-modules/mailer';",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "  constructor (private mailerService: MailerService) {}",
+      "",
+      "  async $2() {",
+      "    return this.mailerService.$2();",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Mailer"
+  },
+  "Nestjs Validation Class": {
+    "prefix": "nsvaldcll",
+    "body": [
+      "import { IsNotEmpty, IsString, IsEmail } from 'class-validator';",
+      "",
+      "export class $1Dto {",
+      "  @IsNotEmpty()",
+      "  @IsString()",
+      "  @IsEmail()",
+      "  email: string;",
+      "",
+      "  @IsNotEmpty()",
+      "  @IsString()",
+      "  password: string;",
+      "}"
+    ],
+    "description": "Nestjs Validation Class"
+  },
+  "Nestjs Validation Method": {
+    "prefix": "nsvalmthd",
+    "body": [
+      "import { Injectable, PipeTransform, ArgumentMetadata } from '@nestjs/common';",
+      "import { $1Dto } from './$1.dto';",
+      "",
+      "@Injectable()",
+      "export class $1Pipe implements PipeTransform {",
+      "  async transform(value: $1Dto, metadata: ArgumentMetadata) {",
+      "    return value;",
+      "  }",
+      "}"
+    ],
+    "description": "Nestjs Validation Method"
+  }
+}

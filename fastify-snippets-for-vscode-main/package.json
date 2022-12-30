@@ -1,0 +1,65 @@
+{
+  "name": "fastify-snippets-for-vscode",
+  "version": "0.0.4",
+  "displayName": "The Ultimate Fastify Snippets (Version 0.0.4)",
+  "description": "Make your Fastify development faster and easier with this extension",
+  "publisher": "EstevamSouza",
+  "scripts": {
+    "build:toc": "node toc",
+    "vscode:login": "vsce login EstevamSo'uza",
+    "vscode:pack": "vsce package",
+    "vscode:publish": "vsce publish",
+    "test": "tap --no-timeout test/**.test.js"
+  },
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets-js.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/snippets-ts.json"
+      }
+    ]
+  },
+  "repository": {
+    "icon": "icon.png",
+    "type": "git",
+    "url": "git+https://github.com/estevam5s/fastify-snippets-for-vscode.git",
+    "directory": "src",
+    "branch": "master"
+  },
+  "keywords": [
+    "vscode",
+    "vscode-snippet",
+    "snippet",
+    "snippets",
+    "fastify",
+    "productivity"
+  ],
+  "badges": [
+      {
+        "url": "https://img.shields.io/badge/Author-Eno Yao-blueviolet",
+        "href": "https://github.com/estevam5s",
+        "description": "Estevam Souza"
+      },
+      {
+        "url": "https://vsmarketplacebadge.apphb.com/version-short/wscats.eno.svg?color=blue&style=flat-square",
+        "href": "https://marketplace.visualstudio.com/items?itemName=EstevamSouza.fastify-snippets-for-vscode",
+        "description": "VS Marketplace"
+      }
+    ],
+  "author": "Estevam Souza <estevamsouzalaureth@gmail.com> (https://github.com/estevam5s)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/estevam5s/fastify-snippets-for-vscode/issues"
+  },
+  "homepage": "https://github.com/estevam5s/fastify-snippets-for-vscode#readme"
+}

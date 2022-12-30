@@ -1,0 +1,69 @@
+{
+	"name": "nestjs-codes-vscode-theme",
+	"version": "0.0.4",
+	"displayName": "nestjs full color theme",
+	"description": "A bright, modern, contrasting theme - created for you, by Estevam Souza.",
+  "publisher": "EstevamSouza",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/estevam5s/nestjs-vscode-theme.git"
+	},
+	"bugs": {
+		"url": "https://github.com/estevam5s/nestjs-vscode-theme/issues",
+    "email": "estevamsouzalaureth@gmail.com"
+	},
+	"author": {
+    "email": "estevamsouzalaureth@gmail.com",
+    "name": "Estevam Souza",
+    "url": "https://github.com/estevam5s"
+  },
+  "maintainers": [
+    {
+      "email": "estevamsouzalaureth@gmail.com",
+      "name": "Estevam Souza"
+    }
+  ],
+  "homepage": "https://estevamwebsite.gatsbyjs.io/",
+  "sponsor": {
+    "url": "https://github.com/sponsors/estevam5s"
+  },
+  "preview": false,
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+	"engines": {
+		"vscode": "^1.13.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"morgan.codes",
+		"dark",
+		"modern",
+		"contrasting",
+		"theme",
+		"vscode"
+	],
+	"icon": "icon.jpg",
+	"galleryBanner": {
+		"color": "#000000",
+		"theme": "dark"
+	},
+	"contributes": {
+		"themes": [
+			{
+				"label": "nestjs.codes",
+				"uiTheme": "vs-dark",
+				"path": "./themes/nestjs.codes-color-theme.json"
+			}
+		]
+	}
+}

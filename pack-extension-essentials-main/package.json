@@ -1,0 +1,32 @@
+{
+  "name": "nest-essentials",
+  "displayName": "Neste Essentials",
+  "description": "Essential extensions for node development and collaboration.",
+  "version": "0.0.1",
+  "publisher": "EstevamSouza",
+  "license": "MIT",
+  "homepage": "https://github.com/estevam5s/nest-essentials",
+  "icon": "assets/nodejs-logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/estevam5s/nest-essentials.git"
+  },
+  "engines": {
+    "vscode": "^1.30.0"
+  },
+  "galleryBanner": {
+    "theme": "dark"
+  },
+  "keywords": [
+    "essentials",
+    "javascript",
+    "nodejs",
+    "nestjs"
+  ],
+  "categories": [
+    "Extension Packs"
+  ],
+  "extensionPack": [
+    "EstevamSouza.nestjs-snippets"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+    "name": "the-best-commited-for-vscode",
+    "displayName": "👹 Emojis Commits 🚀🚀🚀",
+    "description": "Emojis for Git Commits 🚀",
+    "version": "0.0.1",
+    "author": {
+        "name": "Estevam Souza",
+        "email": "estevamsouzalaureth@gmail.com"
+    },
+    "publisher": "EstevamSouza",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/estevam5s/emojis-commited-nestjs.git",
+        "directory": "src",
+        "branch": "master"
+    },
+    "scripts": {
+        "deploy": "vsce publish --yarn",
+        "push": "git push origin master",
+        "package": "vsce package",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "engines": {
+        "vscode": "^1.40.0"
+    },
+    "galleryBanner": {
+        "color": "#fad000"
+    },
+    "keywords": [
+        "Emoji Log",
+        "Emojis",
+        "git",
+        "emoji",
+        "commit",
+        "messages"
+    ],
+    "badges": [
+        {
+          "url": "https://img.shields.io/badge/Author-Eno Yao-blueviolet",
+          "href": "https://github.com/estevam5s",
+          "description": "Estevam Souza"
+        },
+        {
+          "url": "https://vsmarketplacebadge.apphb.com/version-short/wscats.eno.svg?color=blue&style=flat-square",
+          "href": "https://marketplace.visualstudio.com/items?itemName=EstevamSouza.nestjs-snippets-for-vscode",
+          "description": "VS Marketplace"
+        }
+      ],
+    "categories": [
+        "Other"
+    ],
+    "icon": "Logo.png",
+    "contributes": {
+        "commands": [{
+            "command": "extension.the-best-commited-for-vscode",
+            "title": "Emoji Commits ",
+            "icon": {
+                "dark": "images/icon_dark.svg",
+                "light": "images/icon_light.svg"
+            }
+        }],
+        "menus": {
+            "scm/title": [{
+                "when": "scmProvider == git",
+                "command": "extension.the-best-commited-for-vscode",
+                "group": "navigation"
+            }]
+        }
+    },
+    "extensionDependencies": [
+        "vscode.git"
+    ],
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.11.7",
+        "@types/vscode": "^1.40.0",
+        "glob": "^7.1.5",
+        "mocha": "^6.2.2",
+        "typescript": "^3.6.4",
+        "tslint": "^5.20.0"
+    }
+}

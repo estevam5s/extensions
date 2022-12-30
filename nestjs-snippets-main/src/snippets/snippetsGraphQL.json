@@ -1,0 +1,56 @@
+{
+  "GraphQL Query": {
+    "prefix": "query",
+    "body": [
+      "query {",
+      "  $1",
+      "}"
+    ],
+    "description": "GraphQL Query"
+  },
+  "GraphQL Mutation": {
+    "prefix": "mutation",
+    "body": [
+      "mutation {",
+      "  $1",
+      "}"
+    ],
+    "description": "GraphQL Mutation"
+  },
+  "GraphQL Subscription": {
+    "prefix": "subscription",
+    "body": [
+      "subscription {",
+      "  $1",
+      "}"
+    ],
+    "description": "GraphQL Subscription"
+  },
+  "GraphQL Fragment": {
+    "prefix": "fragment",
+    "body": [
+      "fragment $1 on $2 {",
+      "  $3",
+      "}"
+    ],
+    "description": "GraphQL Fragment"
+  },
+  "GraphQL Type": {
+    "prefix": "type",
+    "body": [
+      "type $1 {",
+      "  $2",
+      "}"
+    ],
+    "description": "GraphQL Type"
+  },
+  "GraphQL Interface": {
+    "prefix": "interface",
+    "body": [
+      "interface $1 {",
+      "  $2",
+      "}"
+    ],
+    "description": "GraphQL Interface"
+  }
+}

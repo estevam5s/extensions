@@ -1,0 +1,63 @@
+{
+  "name": "csnippetsforvscode",
+  "displayName": "C and C++ Snippets for VSCode",
+  "description": "C Language Snippets for advanced in VSCode",
+  "version": "1.0.3",
+  "publisher": "EstevamSouza",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/estevam5s/c-snippets-for-vscode",
+    "branch": "master",
+    "commit": "c0e0b0c"
+  },
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.45.0"
+  },
+  "galleryBanner": {
+    "color": "#1b1f23",
+    "theme": "dark"
+  },
+  "categories": [
+    "Snippets",
+    "Formatters",
+    "Linters",
+    "Programming Languages",
+    "Education"
+  ],
+  "keywords": [
+    "C",
+    "C++",
+    "snippets",
+    "C Language",
+    "C Language",
+    "C Programs",
+    "C Language Programs"
+  ],
+  "scripts": {
+    "deploy": "vsce publish --yarn",
+    "push": "git push origin master",
+    "package": "vsce package",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "c",
+        "path": "./snippets/clang.json"
+      },
+      {
+        "language": "c",
+        "path": "./snippets/cprog.json"
+      },
+      {
+        "language": "c",
+        "path": "./snippets/chelp.json"
+      },
+      {
+        "language": "c",
+        "path": "./snippets/cheader.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "Prisma Model": {
+    "prefix": "prisma",
+    "body": [
+      "model $1 {",
+      "  id        Int      @id @default(autoincrement())",
+      "  createdAt DateTime @default(now())",
+      "  updatedAt DateTime @updatedAt",
+      "  $2",
+      "}"
+    ],
+    "description": "Prisma Model"
+  },
+  "Prisma Field": {
+    "prefix": "prisma-field",
+    "body": [
+      "$1 $2 $3",
+      ""
+    ],
+    "description": "Prisma Field"
+  },
+  "Prisma Table": {
+    "prefix": "prisma-table",
+    "body": [
+      "model $1 {",
+      "  id        Int      @id @default(autoincrement())",
+      "  createdAt DateTime @default(now())",
+      "  updatedAt DateTime @updatedAt",
+      "  $2",
+      "}",
+      ""
+    ],
+    "description": "Prisma Table"
+  },
+  "Prisma String": {
+    "prefix": "prisma-string",
+    "body": [
+      "$1 String $2",
+      ""
+    ],
+    "description": "Prisma String"
+  },
+  "Prisma Int": {
+    "prefix": "prisma-int",
+    "body": [
+      "$1 Int $2",
+      ""
+    ],
+    "description": "Prisma Int"
+  },
+  "Prisma Float": {
+    "prefix": "prisma-float",
+    "body": [
+      "$1 Float $2",
+      ""
+    ],
+    "description": "Prisma Float"
+  },
+  "Prisma Boolean": {
+    "prefix": "prisma-boolean",
+    "body": [
+      "$1 Boolean $2",
+      ""
+    ],
+    "description": "Prisma Boolean"
+  },
+  "Prisma DateTime": {
+    "prefix": "prisma-datetime",
+    "body": [
+      "$1 DateTime $2",
+      ""
+    ],
+    "description": "Prisma DateTime"
+  },
+  "Prisma Json": {
+    "prefix": "prisma-json",
+    "body": [
+      "$1 Json $2",
+      ""
+    ],
+    "description": "Prisma Json"
+  },
+  "Prisma Enum": {
+    "prefix": "prisma-enum",
+    "body": [
+      "enum $1 {",
+      "  $2",
+      "}",
+      ""
+    ],
+    "description": "Prisma Enum"
+  },
+  "Prisma Relation": {
+    "prefix": "prisma-relation",
+    "body": [
+      "$1 $2 @relation(fields: [$3], references: [$4])",
+      ""
+    ],
+    "description": "Prisma Relation"
+  },
+  "Prisma Unique": {
+    "prefix": "prisma-unique",
+    "body": [
+      "$1 $2 @unique",
+      ""
+    ],
+    "description": "Prisma Unique"
+  },
+  "Prisma Default": {
+    "prefix": "prisma-default",
+    "body": [
+      "$1 $2 @default($3)",
+      ""
+    ],
+    "description": "Prisma Default"
+  }
+}
